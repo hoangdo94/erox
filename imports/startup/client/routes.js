@@ -20,16 +20,25 @@ const requireAuth = (nextState, replace) => {
   }
 };
 
+const requireUnauth = (nextState, replace) => {
+  if (Meteor.userId()) {
+    replace({
+      pathname: '/',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }
+};
+
 Meteor.startup(() => {
   render(
     <Router history={ browserHistory }>
       <Route path="/" component={ App }>
         <IndexRoute name="index" component={ Index } onEnter={ requireAuth } />
         <Route name="documents" path="/documents" component={ Documents } onEnter={ requireAuth } />
-        <Route name="login" path="/login" component={ Login } />
-        <Route name="recover-password" path="/recover-password" component={ RecoverPassword } />
-        <Route name="reset-password" path="/reset-password/:token" component={ ResetPassword } />
-        <Route name="signup" path="/signup" component={ Signup } />
+        <Route name="login" path="/login" component={ Login } onEnter={ requireUnauth } />
+        <Route name="recover-password" path="/recover-password" component={ RecoverPassword } onEnter={ requireUnauth } />
+        <Route name="reset-password" path="/reset-password/:token" component={ ResetPassword } onEnter={ requireUnauth } />
+        <Route name="signup" path="/signup" component={ Signup } onEnter={ requireUnauth } />
         <Route path="*" component={ NotFound } />
       </Route>
     </Router>,
