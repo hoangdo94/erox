@@ -14,6 +14,9 @@ const getUserData = () => ({
     firstName: getInputValue(component.refs.firstName),
     lastName: getInputValue(component.refs.lastName),
   },
+  inventory: {
+    cash: 0
+  }
 });
 
 const signUp = () => {

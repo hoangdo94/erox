@@ -19,9 +19,6 @@ const profileLink = () => {
 export const AuthenticatedNavigation = () => (
   <div>
     <Nav>
-      <IndexLinkContainer to="/">
-        <NavItem eventKey={ 1 } href="/">Index</NavItem>
-      </IndexLinkContainer>
       <LinkContainer to="/documents">
         <NavItem eventKey={ 2 } href="/documents">Documents</NavItem>
       </LinkContainer>

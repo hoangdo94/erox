@@ -61,6 +61,13 @@ Schema.UserProfile = new SimpleSchema({
     }
 });
 
+Schema.UserInventory = new SimpleSchema({
+  cash: {
+    type: Number,
+    default: 0
+  }
+})
+
 Schema.User = new SimpleSchema({
     username: {
         type: String,
@@ -85,6 +92,10 @@ Schema.User = new SimpleSchema({
     },
     profile: {
         type: Schema.UserProfile,
+        optional: true
+    },
+    inventory: {
+        type: Schema.UserInventory,
         optional: true
     },
     services: {
