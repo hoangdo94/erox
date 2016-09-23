@@ -11,10 +11,8 @@ const getUserData = () => ({
   email: getInputValue(component.refs.emailAddress),
   password: getInputValue(component.refs.password),
   profile: {
-    name: {
-      first: getInputValue(component.refs.firstName),
-      last: getInputValue(component.refs.lastName),
-    },
+    firstName: getInputValue(component.refs.firstName),
+    lastName: getInputValue(component.refs.lastName),
   },
 });
 

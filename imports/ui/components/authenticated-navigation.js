@@ -8,8 +8,12 @@ const handleLogout = () => Meteor.logout(() => browserHistory.push('/login'));
 
 const userName = () => {
   const user = Meteor.user();
-  const name = user && user.profile ? user.profile.name : '';
-  return user ? `${name.first} ${name.last}` : '';
+  const profile = user && user.profile ? user.profile : '';
+  return profile ? `${profile.firstName} ${profile.lastName}` : '';
+};
+
+const profileLink = () => {
+  return `/profile/${ Meteor.user().emails[0].address }`;
 };
 
 export const AuthenticatedNavigation = () => (
@@ -24,7 +28,11 @@ export const AuthenticatedNavigation = () => (
     </Nav>
     <Nav pullRight>
       <NavDropdown eventKey={ 3 } title={ userName() } id="basic-nav-dropdown">
-        <MenuItem eventKey={ 3.1 } onClick={ handleLogout }>Logout</MenuItem>
+        <LinkContainer to={ profileLink() } >
+          <MenuItem eventKey={ 3.1 } href={ profileLink() }>Profile</MenuItem>
+        </LinkContainer>
+        <MenuItem divider/>
+        <MenuItem eventKey={ 3.2 } onClick={ handleLogout }>Logout</MenuItem>
       </NavDropdown>
     </Nav>
   </div>

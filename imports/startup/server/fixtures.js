@@ -6,7 +6,8 @@ const users = [{
   email: 'hoangdo.dh94@gmail.com',
   password: '123123123',
   profile: {
-    name: { first: 'Hoang', last: 'Do' },
+    firstName: 'Hoang',
+    lastName: 'Do'
   },
   roles: ['admin'],
 }];
