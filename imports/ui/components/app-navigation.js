@@ -10,7 +10,7 @@ export class AppNavigation extends React.Component {
   }
 
   render() {
-    return <Navbar>
+    return <Navbar bsStyle={ 'inverse' }>
       <Navbar.Header>
         <Navbar.Brand>
           <Link to="/">Erox</Link>
